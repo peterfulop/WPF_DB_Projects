@@ -10,7 +10,7 @@ namespace _210505_WPF_App_Tanarok
 
     /*
     
-    0) Az adattábla atribútumainak megfelelően a TextBoxok létrehozásakor feltétlenül szükséges beállítani a következő propertyket:
+    0) Az adattábla attribútumainak megfelelően a TextBoxok létrehozásakor feltétlenül szükséges beállítani a következő propertyket:
            1. DataContext="tábla.oszlopnév"
            2. Tag="req" (Lehet bármi, lényeg, hogy később ezt adjuk meg paraméterként!)
        Az adott TextBox elemek egy StackPanelen kell hogy elhelyezkedjenek. 
@@ -20,7 +20,7 @@ namespace _210505_WPF_App_Tanarok
 
     2) set_textBox_inputs
        A metódus a korábban definiált TextBoxInput Class adatstruktúrája alapján az első lépésben begyűjtött TextBoxokat egy objetumba gyűjti össze, 2 fontos propertyt beállítva.
-           1. A DbAttribute property a TextBox előre definiált DataContext értéke lesz, ami nem más, mint a beviteli mező adatbázisbeli atribútumának megfelelője. ( tábla oszlop név = input mező DataContext)
+           1. A DbAttribute property a TextBox előre definiált DataContext értéke lesz, ami nem más, mint a beviteli mező adatbázisbeli attribútumának megfelelője. ( tábla oszlop név = input mező DataContext)
            2. A UIElement property maga TextBox maga a TextBox, mint elem.
        Visszatérési értéke egy <TextBoxInput> típusú lista.
 
