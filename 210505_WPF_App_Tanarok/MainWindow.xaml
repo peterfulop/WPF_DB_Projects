@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:_210505_WPF_App_Tanarok"
         mc:Ignorable="d"
         Title="Tanarok nyilvantartas"
-        Height="450" Width="800" ResizeMode="NoResize"
+        Height="600" Width="800" ResizeMode="NoResize"
         Loaded="Window_Loaded" 
         >
-    
-    <Grid>
+
+    <Grid x:Name="LayoutRoot" Margin="0">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -21,6 +21,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+                
         <StackPanel Grid.Column="0" Margin="20" x:Name="inputFieldsPanel">
 
             <Label Content="Név"></Label>
@@ -41,7 +42,13 @@
 
             <Button x:Name="addDataBtn" Content="Hozzáad" Margin="0 25 0 0" Click="addDataBtn_Click" Height="30"></Button>
 
+
+
+
+
         </StackPanel>
+
+
 
 
 

@@ -25,10 +25,10 @@ namespace _210505_WPF_App_Tanarok
         public MainWindow()
         {
             InitializeComponent();
-            TextBoxInputs = SetTexBoxes.set_textBoxInputs(inputFieldsPanel, "req");
+            TextBoxInputs = SetTexBoxes.set_textBox_inputs("req", inputFieldsPanel);
             SetTexBoxes.set_maximum_length_of_inputs(TextBoxInputs, "Tanarok");
-        }
 
+        }
 
         private bool isIntputEmpty()
         {
@@ -85,13 +85,11 @@ namespace _210505_WPF_App_Tanarok
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();
-
         }
 
         private void addDataBtn_Click(object sender, RoutedEventArgs e)
         {
             AddData(nameInputBox.Text, cityInputBox.Text, profInputBox.Text, (bool)genderRadioMale.IsChecked);
-
         }
     }
 }
