@@ -81,7 +81,6 @@ namespace _210505_WPF_App_Tanarok
             TextBoxInputs.ForEach(element => element.UIElement.Clear());
         }
 
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();
@@ -91,5 +90,6 @@ namespace _210505_WPF_App_Tanarok
         {
             AddData(nameInputBox.Text, cityInputBox.Text, profInputBox.Text, (bool)genderRadioMale.IsChecked);
         }
+
     }
 }

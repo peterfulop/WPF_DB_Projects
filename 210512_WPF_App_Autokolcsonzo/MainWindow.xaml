@@ -1,0 +1,209 @@
+﻿<Window x:Class="_210512_WPF_App_Autokolcsonzo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_210512_WPF_App_Autokolcsonzo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" 
+        Loaded="Window_Loaded"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Background="#181735">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!--Fejrész kialakítása-->
+        <Grid Background="#0f0f2d" Panel.ZIndex="1" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Kölcsönzés nyilvántartás" Grid.ColumnSpan="4"
+                       Foreground="White" FontWeight="Medium" FontSize="16" FontFamily="Fonts/#Dosis"
+                       VerticalAlignment="Center" Margin="0,6,10,6"/>
+
+
+            <Button x:Name="bt_kolcsonzes" Grid.Column="4" Content="Kölcsönzés" Foreground="LightGray">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="bt_autok" Grid.Column="5" Content="Auto" Foreground="LightGray" Click="bt_autok_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="bt_berlo" Grid.Column="6" Content="Bérlő" Foreground="LightGray">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+            <TextBlock Text="Website" Grid.Column="8" Grid.ColumnSpan="3"
+                       Foreground="LightGray" FontFamily="Fonts/#Dosis"
+                       VerticalAlignment="Center"/>
+
+
+
+            <StackPanel Grid.Column="13" Orientation="Horizontal">
+                <Button x:Name="Bezar" Click="Bezar_Click" Content="Bezár" Foreground="White" FontSize="14" FontWeight="Medium">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Orange"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" Height="25" CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Frame x:Name="main" Grid.Row="1" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
+
+        <!--minta elkészítése-->
+        <Grid Grid.Row="1" Panel.ZIndex="-1">
+            <Grid.RenderTransform>
+                <RotateTransform Angle="50"/>
+            </Grid.RenderTransform>
+
+            <StackPanel Orientation="Horizontal" Margin="-353,-481,-493,520">
+
+                <StackPanel>
+                    <Border Width="700" Height="35"
+                                Background="#383660"
+                                CornerRadius="20"
+                                Margin="150,0,0,0"/>
+
+                    <Border Width="700" Height="35"
+                                Background="Orange"
+                                CornerRadius="20"
+                                Margin="0,15,0,0"/>
+
+                    <Border Width="700" Height="35"
+                                Background="#3dddc2"
+                                CornerRadius="20"
+                                Margin="75,15,0,0"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Border Width="700" Height="35"
+                                Background="#383660"
+                                CornerRadius="20"
+                                Margin="150,0,0,0"/>
+
+                    <Border Width="700" Height="35"
+                                Background="Orange"
+                                CornerRadius="20"
+                                Margin="0,15,0,0"/>
+
+                    <Border Width="700" Height="35"
+                                Background="#3dddc2"
+                                CornerRadius="20"
+                                Margin="75,15,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+
+
+    </Grid>
+</Window>
