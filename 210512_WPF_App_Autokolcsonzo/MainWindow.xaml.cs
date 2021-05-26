@@ -47,5 +47,16 @@ namespace _210512_WPF_App_Autokolcsonzo
             base.OnMouseLeftButtonDown(e);
             this.DragMove();
         }
+
+        private void bt_kolcsonzes_Click(object sender, RoutedEventArgs e)
+        {
+            main.Content = new KolcsonzoPage();
+
+        }
+
+        private void bt_berlo_Click(object sender, RoutedEventArgs e)
+        {
+            main.Content = new BerloPage();
+        }
     }
 }

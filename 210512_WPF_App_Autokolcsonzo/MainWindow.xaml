@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_210512_WPF_App_Autokolcsonzo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" 
+        Title="MainWindow" Height="550" Width="800" 
         Loaded="Window_Loaded"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -42,7 +42,7 @@
                        VerticalAlignment="Center" Margin="0,6,10,6"/>
 
 
-            <Button x:Name="bt_kolcsonzes" Grid.Column="4" Content="Kölcsönzés" Foreground="LightGray">
+            <Button x:Name="bt_kolcsonzes" Click="bt_kolcsonzes_Click" Grid.Column="4" Content="Kölcsönzés" Foreground="LightGray">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -94,7 +94,7 @@
                 </Button.Template>
             </Button>
 
-            <Button x:Name="bt_berlo" Grid.Column="6" Content="Bérlő" Foreground="LightGray">
+            <Button x:Name="bt_berlo" Click="bt_berlo_Click" Grid.Column="6" Content="Bérlő" Foreground="LightGray">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>

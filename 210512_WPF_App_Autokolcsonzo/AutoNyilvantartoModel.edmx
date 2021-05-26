@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AutoNyilvantartasDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rendszam" Type="varchar" MaxLength="7" />
+          <Property Name="Marka" Type="varchar" MaxLength="20" />
+          <Property Name="Tipus" Type="varchar" MaxLength="20" />
+          <Property Name="Szin" Type="varchar" MaxLength="20" />
+          <Property Name="Evjarat" Type="int" />
+        </EntityType>
+        <EntityType Name="Berlo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nev" Type="varchar" MaxLength="50" />
+          <Property Name="Cim" Type="varchar" MaxLength="50" />
+          <Property Name="Nem" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Kolcsonzo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nev" Type="varchar" MaxLength="50" />
+          <Property Name="Cim" Type="varchar" MaxLength="50" />
+          <Property Name="Auto_Id" Type="int" />
+          <Property Name="Berlo_Id" Type="int" />
+        </EntityType>
+        <Association Name="Auto_Id">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+          <End Role="Kolcsonzo" Type="Self.Kolcsonzo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kolcsonzo">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Berlo_Id">
+          <End Role="Berlo" Type="Self.Berlo" Multiplicity="1" />
+          <End Role="Kolcsonzo" Type="Self.Kolcsonzo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Berlo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kolcsonzo">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoNyilvantartasDBModelStoreContainer">
+          <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Berlo" EntityType="Self.Berlo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kolcsonzo" EntityType="Self.Kolcsonzo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Auto_Id" Association="Self.Auto_Id">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="Kolcsonzo" EntitySet="Kolcsonzo" />
+          </AssociationSet>
+          <AssociationSet Name="Berlo_Id" Association="Self.Berlo_Id">
+            <End Role="Berlo" EntitySet="Berlo" />
+            <End Role="Kolcsonzo" EntitySet="Kolcsonzo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoNyilvantartasDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rendszam" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Marka" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Szin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Evjarat" Type="Int32" />
+          <NavigationProperty Name="Kolcsonzo" Relationship="AutoNyilvantartasDBModel.Auto_Id" FromRole="Auto" ToRole="Kolcsonzo" />
+        </EntityType>
+        <EntityContainer Name="AutoNyilvantartasDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Auto" EntityType="Self.Auto" />
+          <EntitySet Name="Berlo" EntityType="AutoNyilvantartasDBModel.Berlo" />
+          <EntitySet Name="Kolcsonzo" EntityType="AutoNyilvantartasDBModel.Kolcsonzo" />
+          <AssociationSet Name="Auto_Id" Association="AutoNyilvantartasDBModel.Auto_Id">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="Kolcsonzo" EntitySet="Kolcsonzo" />
+          </AssociationSet>
+          <AssociationSet Name="Berlo_Id" Association="AutoNyilvantartasDBModel.Berlo_Id">
+            <End Role="Berlo" EntitySet="Berlo" />
+            <End Role="Kolcsonzo" EntitySet="Kolcsonzo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Berlo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nev" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nem" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kolcsonzo" Relationship="AutoNyilvantartasDBModel.Berlo_Id" FromRole="Berlo" ToRole="Kolcsonzo" />
+        </EntityType>
+        <EntityType Name="Kolcsonzo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nev" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Auto_Id" Type="Int32" />
+          <Property Name="Berlo_Id" Type="Int32" />
+          <NavigationProperty Name="Auto" Relationship="AutoNyilvantartasDBModel.Auto_Id" FromRole="Kolcsonzo" ToRole="Auto" />
+          <NavigationProperty Name="Berlo" Relationship="AutoNyilvantartasDBModel.Berlo_Id" FromRole="Kolcsonzo" ToRole="Berlo" />
+        </EntityType>
+        <Association Name="Auto_Id">
+          <End Type="AutoNyilvantartasDBModel.Auto" Role="Auto" Multiplicity="1" />
+          <End Type="AutoNyilvantartasDBModel.Kolcsonzo" Role="Kolcsonzo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kolcsonzo">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Berlo_Id">
+          <End Type="AutoNyilvantartasDBModel.Berlo" Role="Berlo" Multiplicity="1" />
+          <End Type="AutoNyilvantartasDBModel.Kolcsonzo" Role="Kolcsonzo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Berlo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kolcsonzo">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutoNyilvantartasDBModelStoreContainer" CdmEntityContainer="AutoNyilvantartasDBEntities">
+          <EntitySetMapping Name="Auto">
+            <EntityTypeMapping TypeName="AutoNyilvantartasDBModel.Auto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rendszam" ColumnName="Rendszam" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Tipus" ColumnName="Tipus" />
+                <ScalarProperty Name="Szin" ColumnName="Szin" />
+                <ScalarProperty Name="Evjarat" ColumnName="Evjarat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Berlo">
+            <EntityTypeMapping TypeName="AutoNyilvantartasDBModel.Berlo">
+              <MappingFragment StoreEntitySet="Berlo">
+                <ScalarProperty Name="Nem" ColumnName="Nem" />
+                <ScalarProperty Name="Cim" ColumnName="Cim" />
+                <ScalarProperty Name="Nev" ColumnName="Nev" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kolcsonzo">
+            <EntityTypeMapping TypeName="AutoNyilvantartasDBModel.Kolcsonzo">
+              <MappingFragment StoreEntitySet="Kolcsonzo">
+                <ScalarProperty Name="Berlo_Id" ColumnName="Berlo_Id" />
+                <ScalarProperty Name="Auto_Id" ColumnName="Auto_Id" />
+                <ScalarProperty Name="Cim" ColumnName="Cim" />
+                <ScalarProperty Name="Nev" ColumnName="Nev" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

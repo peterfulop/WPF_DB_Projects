@@ -41,42 +41,7 @@ namespace _210505_WPF_App_Tanarok
 
         public static IEnumerable<TextBox> get_required_textBoxes_by_tagname(string tagname, StackPanel panel )
         {
-
-            //var controll = panel.GetType().ToString();
-
-            //switch (controll)
-            //{
-            //    case "System.Windows.Controls.StackPanel":
-            //        var sp = (StackPanel)panel;
-            //        return sp.Children.OfType<TextBox>().Where(x => x.Tag.ToString() == tagname);
-
-            //    case "System.Windows.Controls.WrapPanel":
-            //        var wp = (WrapPanel)panel;
-            //        return wp.Children.OfType<TextBox>().Where(x => x.Tag.ToString() == tagname);
-
-            //    case "System.Windows.Controls.Grid":
-            //        var gr = (WrapPanel)panel;
-            //        return gr.Children.OfType<TextBox>().Where(x => x.Tag.ToString() == tagname);
-
-            //    case "System.Windows.Controls.Canvas":
-            //        var cv = (Canvas)panel;
-            //        return cv.Children.OfType<TextBox>().Where(x => x.Tag.ToString() == tagname);
-
-            //    case "System.Windows.Controls.DockPanel":
-            //        var dp = (DockPanel)panel;
-            //        return dp.Children.OfType<TextBox>().Where(x => x.Tag.ToString() == tagname);
-
-            //    case "System.Windows.Controls.VirtualizingStackPanel":
-            //        var vp = (VirtualizingStackPanel)panel;
-            //        return vp.Children.OfType<TextBox>().Where(x => x.Tag.ToString() == tagname);
-
-            //    default:
-            //        break;
-            //}
-
             return panel.Children.OfType<TextBox>().Where(x => x.Tag.ToString() == tagname);
-
-
         }
 
         public static List<TextBoxInput> set_textBox_inputs(string tagname, StackPanel panel)

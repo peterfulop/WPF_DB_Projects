@@ -1,13 +1,13 @@
-﻿<Page x:Class="_210512_WPF_App_Autokolcsonzo.AutoPage"
+﻿<Page x:Class="_210512_WPF_App_Autokolcsonzo.KolcsonzoPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:_210512_WPF_App_Autokolcsonzo"
-      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="800"
-      Title="AutoPage"
+      Title="KolcsonzoPage"
+       xmlns:fa="http://schemas.fontawesome.io/icons/"
       Loaded="Page_Loaded"
       >
 
@@ -31,43 +31,91 @@
             </StackPanel>
 
             <WrapPanel>
-                <TextBlock Text="Rendszám:" Width="80" Foreground="White"
+                <TextBlock Text="Kölcsönző neve:" Width="120" Foreground="White"
                                FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
                                VerticalAlignment="Center"/>
-                <TextBox x:Name="BoxRendszam" MaxLength="7" Width="200" Height="25" Margin="0,0,0,5"/>
+                <TextBox x:Name="BoxKolcsonzoNev" MaxLength="7" Width="200" Height="25" Margin="0,0,0,5"/>
             </WrapPanel>
 
             <WrapPanel>
-                <TextBlock Text="Márka:" Width="80" Foreground="White"
+                <TextBlock Text="Kölcsönző címe:" Width="120" Foreground="White"
                                FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
                                VerticalAlignment="Center"/>
-                <TextBox x:Name="BoxMarka" Width="200" Height="25" Margin="0,0,0,5"/>
+                <TextBox x:Name="BoxKolcsonzoCim" Width="200" Height="25" Margin="0,0,0,5"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Válassz autót:" Width="120" Foreground="White"
+                               FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
+                               VerticalAlignment="Center"/>
+                <ComboBox x:Name="ComboKolcsonzoAuto" Width="200" Height="25" Margin="0,0,0,5"
+                          DisplayMemberPath="Rendszam" SelectedValuePath="Id" SelectedIndex="0"/>
+                
+                <Button x:Name="btn_auto_new" Click="btn_auto_new_Click" Margin="25 0 0 0" Content="Autó hozzáad" Foreground="White" FontSize="14" FontWeight="Medium">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="Orange"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="OrangeRed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="120" Height="25" CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                
+            </WrapPanel>
+            
+            <WrapPanel>
+                <TextBlock Text="Válassz bérlőt:" Width="120" Foreground="White"
+                               FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
+                               VerticalAlignment="Center"/>
+                <ComboBox x:Name="ComboKolcsonzoBerlo" Width="200" Height="25" Margin="0,0,0,5"
+                          DisplayMemberPath="Nev" SelectedValuePath="Id" SelectedIndex="0"/>
+                <Button x:Name="btn_berlo_new" Click="btn_berlo_new_Click"  Margin="25 0 0 0" Content="Bérlő hozzáad" Foreground="White" FontSize="14" FontWeight="Medium">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="Orange"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="OrangeRed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="120" Height="25" CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </WrapPanel>
 
-            <WrapPanel>
-                <TextBlock Text="Típus:" Width="80" Foreground="White"
-                               FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
-                               VerticalAlignment="Center"/>
-                <TextBox x:Name="BoxTipus" Width="200" Height="25" Margin="0,0,0,5"/>
-            </WrapPanel>
-            
-            <WrapPanel>
-                <TextBlock Text="Szín:" Width="80" Foreground="White"
-                               FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
-                               VerticalAlignment="Center"/>
-                <TextBox x:Name="BoxSzin" Width="200" Height="25" Margin="0,0,0,5"/>
-            </WrapPanel>
-            
-            <WrapPanel>
-                <TextBlock Text="Évjárat:" Width="80" Foreground="White"
-                               FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
-                               VerticalAlignment="Center"/>
-                <TextBox x:Name="BoxEvjarat" Width="200" Height="25" Margin="0,0,0,5"/>
-            </WrapPanel>
+
 
             <!--Hozzáad gomb létrehozása-->
             <StackPanel Grid.Column="13" Orientation="Horizontal" Margin="220,5,0,0">
-                <Button x:Name="btn_hozzaad" Click="btn_hozzaad_Click" Content="Hozzáad" Foreground="White" FontSize="14" FontWeight="Medium">
+                <Button x:Name="btn_hozzaad" Click="btn_hozzaad_Click"  Content="Hozzáad" Foreground="White" FontSize="14" FontWeight="Medium">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -94,30 +142,31 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-
+ 
 
         <!--Datagrid és a mezők-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="527*"/>
-                <ColumnDefinition Width="310*"/>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="dg_auto"
-                      SelectionChanged="dg_auto_SelectionChanged"
+
+
+            <DataGrid x:Name="dg_kolcsonzo" SelectionChanged="dg_kolcsonzo_SelectionChanged"
                       CanUserAddRows="false"
                       Margin="5,0,0,5"
                       AreRowDetailsFrozen="True"
-                      AutoGenerateColumns="False"
-                      >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Rendszám" Binding="{Binding Path=Rendszam}"/>
-                <DataGridTextColumn Header="Márka" Binding="{Binding Path=Marka}"/>
-                <DataGridTextColumn Header="Típus" Binding="{Binding Path=Tipus}"/>
-                <DataGridTextColumn Header="Szín" Binding="{Binding Path=Szin}"/>
-                <DataGridTextColumn Header="Évjárat" Binding="{Binding Path=Evjarat}"/>
-            </DataGrid.Columns>
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Cégnév" Binding="{Binding Path=Nev}"/>
+                    <DataGridTextColumn Header="Cím" Binding="{Binding Path=Cim}"/>
+                    <DataGridTextColumn Header="Autó rendszám" Binding="{Binding Path=Auto.Rendszam}"/>
+                     <DataGridTextColumn Header="Bérlő neve" Binding="{Binding Path=Berlo.Nev}"/>
+                </DataGrid.Columns>
             </DataGrid>
+
+
 
             <StackPanel Grid.Column="1" Margin="10,0,5,0">
 
@@ -130,37 +179,33 @@
                 </StackPanel>
 
                 <WrapPanel>
-                    <TextBlock Text="Rendszám:" Width="80" Foreground="White"
+                    <TextBlock Text="Kölcsönző neve:" Width="120" Foreground="White"
                                FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
                                VerticalAlignment="Center"/>
-                    <TextBox x:Name="BoxRendszamFriss" Width="200" Height="25" Margin="0,0,0,5"/>
+                    <TextBox x:Name="BoxKolcsonzoNevFriss" Width="200" Height="25" Margin="0,0,0,5"/>
                 </WrapPanel>
 
                 <WrapPanel>
-                    <TextBlock Text="Márka:" Width="80" Foreground="White"
+                    <TextBlock Text="Kölcsönző címe:" Width="120" Foreground="White"
                                FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
                                VerticalAlignment="Center"/>
-                    <TextBox x:Name="BoxMarkaFriss" Width="200" Height="25" Margin="0,0,0,5"/>
+                    <TextBox x:Name="BoxKolcsonzoCimFriss" Width="200" Height="25" Margin="0,0,0,5"/>
                 </WrapPanel>
 
                 <WrapPanel>
-                    <TextBlock Text="Típus:" Width="80" Foreground="White"
+                    <TextBlock Text="Választott autó:" Width="120" Foreground="White"
                                FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
                                VerticalAlignment="Center"/>
-                    <TextBox x:Name="BoxTipusFriss" Width="200" Height="25" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="BoxKolcsonzoAutoFsriss" Width="200" Height="25" Margin="0,0,0,5"/>
                 </WrapPanel>
                 <WrapPanel>
-                    <TextBlock Text="Szín:" Width="80" Foreground="White"
+                    <TextBlock Text="Választott bérlő:" Width="120" Foreground="White"
                                FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
                                VerticalAlignment="Center"/>
-                    <TextBox x:Name="BoxSzinFriss" Width="200" Height="25" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="BoxKolcsonzoBerloFriss" Width="200" Height="25" Margin="0,0,0,5"/>
                 </WrapPanel>
-                <WrapPanel>
-                    <TextBlock Text="Évjárat:" Width="80" Foreground="White"
-                               FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
-                               VerticalAlignment="Center"/>
-                    <TextBox x:Name="BoxEvjaratFriss" Width="200" Height="25" Margin="0,0,0,5"/>
-                </WrapPanel>
+
+
             </StackPanel>
         </Grid>
 
@@ -182,7 +227,7 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="6" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,0">
-                <Button x:Name="btn_torol" Click="btn_torol_Click" Content="Adatok törlése" Foreground="White" FontSize="14" FontWeight="Medium">
+                <Button x:Name="btn_torol" Click="btn_torol_Click"  Content="Adatok törlése" Foreground="White" FontSize="14" FontWeight="Medium">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -210,7 +255,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="11" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,0">
-                <Button x:Name="btn_frissit" Click="btn_frissit_Click" Content="Adatok frissítése" Foreground="White" FontSize="14" FontWeight="Medium">
+                <Button x:Name="btn_frissit" Click="btn_frissit_Click"  Content="Adatok frissítése" Foreground="White" FontSize="14" FontWeight="Medium">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -239,4 +284,5 @@
         </Grid>
 
     </Grid>
+
 </Page>

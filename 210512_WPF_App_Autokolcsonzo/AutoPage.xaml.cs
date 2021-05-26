@@ -23,8 +23,8 @@ namespace _210512_WPF_App_Autokolcsonzo
         public AutoPage()
         {
             InitializeComponent();
-            AddInputs = new List<TextBox> { BoxMarka, BoxTipus, BoxRendszam };
-            EditInputs = new List<TextBox> { BoxMarkaFriss, BoxtipusFriss, BoxRendszamFriss };
+            AddInputs = new List<TextBox> { BoxMarka, BoxTipus, BoxRendszam, BoxSzin, BoxEvjarat };
+            EditInputs = new List<TextBox> { BoxMarkaFriss, BoxTipusFriss, BoxRendszamFriss, BoxSzinFriss, BoxEvjaratFriss };
         }
         public int SelectedId { get; set; }
 
@@ -52,7 +52,20 @@ namespace _210512_WPF_App_Autokolcsonzo
             return leave;
         }
 
-        private void CreateData(string marka, string tipus, string rendszam)
+        public static bool isInputNumber(string textToInt)
+        {
+
+            if (int.TryParse(textToInt, out int number))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void CreateData(string marka, string tipus, string rendszam, string szin, string evjarat)
         {
 
             var empty = isInputsEmpty(AddInputs);
@@ -62,6 +75,13 @@ namespace _210512_WPF_App_Autokolcsonzo
                 return;
             };
 
+            var isNumber = isInputNumber(evjarat);
+            if (!isNumber)
+            {
+                MessageBox.Show("Az évszám nem szám formátum!");
+                return;
+            }
+
             using (var db = new AutoNyilvantartasDBEntities())
             {
                 var newAuto = new Auto();
@@ -69,6 +89,8 @@ namespace _210512_WPF_App_Autokolcsonzo
                     newAuto.Marka = marka;
                     newAuto.Tipus = tipus;
                     newAuto.Rendszam = rendszam;
+                    newAuto.Szin = szin;
+                    newAuto.Evjarat = Int32.Parse(evjarat);
                 }
                 db.Auto.Add(newAuto);
                 db.SaveChanges();
@@ -78,15 +100,26 @@ namespace _210512_WPF_App_Autokolcsonzo
             };
         }
 
-        private void UpdateData(string marka, string tipus, string rendszam)
+        private void UpdateData(string marka, string tipus, string rendszam,string szin, string evjarat)
         {
 
-            //var empty = isInputsEmpty(EditInputs);
-            //if (empty) return;
+            var empty = isInputsEmpty(EditInputs);
+            if (empty)
+            {
+                MessageBox.Show("Minden mező kitöltése kötelező!");
+                return;
+            };
+
+            var isNumber = isInputNumber(evjarat);
+            if (!isNumber)
+            {
+                MessageBox.Show("Az évszám nem szám formátum!");
+                return;
+            };
+
 
             using (var db = new AutoNyilvantartasDBEntities())
             {
-
                 if (!dg_auto.SelectedIndex.Equals(-1))
                 {
                     var autoadat = db.Auto.SingleOrDefault(adat => adat.Id == SelectedId);
@@ -95,6 +128,8 @@ namespace _210512_WPF_App_Autokolcsonzo
                         autoadat.Marka = marka;
                         autoadat.Tipus = tipus;
                         autoadat.Rendszam = rendszam;
+                        autoadat.Szin = szin;
+                        autoadat.Evjarat = int.Parse(evjarat);
                     }
 
                     db.SaveChanges();
@@ -151,7 +186,7 @@ namespace _210512_WPF_App_Autokolcsonzo
 
         private void btn_hozzaad_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateData(BoxMarka.Text,BoxTipus.Text,BoxRendszam.Text,BoxSzin.Text, BoxEvjarat.Text);
         }
 
         private void dg_auto_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -167,7 +202,10 @@ namespace _210512_WPF_App_Autokolcsonzo
                     Auto adat = (Auto)dg_auto.SelectedItem;
                     BoxRendszamFriss.Text = adat.Rendszam;
                     BoxMarkaFriss.Text = adat.Marka;
-                    BoxtipusFriss.Text = adat.Tipus;
+                    BoxTipusFriss.Text = adat.Tipus;
+                    BoxSzinFriss.Text = adat.Szin;
+                    BoxEvjaratFriss.Text = adat.Evjarat.ToString();
+
                     SelectedId = adat.Id;
                 }
             }
@@ -176,12 +214,12 @@ namespace _210512_WPF_App_Autokolcsonzo
         private void btn_torol_Click(object sender, RoutedEventArgs e)
         {
             DeleteData();
-
         }
 
         private void btn_frissit_Click(object sender, RoutedEventArgs e)
         {
-            UpdateData(BoxMarkaFriss.Text, BoxtipusFriss.Text, BoxRendszamFriss.Text);
+
+            UpdateData(BoxMarkaFriss.Text, BoxTipusFriss.Text, BoxRendszamFriss.Text, BoxSzinFriss.Text, BoxEvjaratFriss.Text);
 
         }
     }
