@@ -117,5 +117,11 @@ namespace _210601_ClientManager
             var cw = new clientWindow(true);
             cw.ShowDialog();
         }
+
+        private void btn_reload_Click(object sender, RoutedEventArgs e)
+        {
+            loadGrid();
+
+        }
     }
 }
