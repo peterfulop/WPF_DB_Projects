@@ -7,7 +7,7 @@
       <Diagram DiagramId="337db01f97d44c269e20d095d4c64e1e" Name="Diagram1">
         <EntityTypeShape EntityType="AutoNyilvantartasDBModel.Auto" Width="1.5" PointX="2" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoNyilvantartasDBModel.Berlo" Width="1.5" PointX="6.875" PointY="3.375" />
-        <EntityTypeShape EntityType="AutoNyilvantartasDBModel.Kolcsonzo" Width="1.5" PointX="4.5" PointY="3.375" />
+        <EntityTypeShape EntityType="AutoNyilvantartasDBModel.Kolcsonzo" Width="1.5" PointX="4.5" PointY="2.25" />
         <AssociationConnector Association="AutoNyilvantartasDBModel.Auto_Id" />
         <AssociationConnector Association="AutoNyilvantartasDBModel.Berlo_Id" />
       </Diagram>

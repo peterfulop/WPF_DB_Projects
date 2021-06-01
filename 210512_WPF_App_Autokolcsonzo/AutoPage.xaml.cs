@@ -20,6 +20,10 @@ namespace _210512_WPF_App_Autokolcsonzo
     /// </summary>
     public partial class AutoPage : Page
     {
+        private List<TextBox> AddInputs { get; set; }
+        private List<TextBox> EditInputs { get; set; }
+        private List<TextBox> RequiredInputs { get; set; }
+
         public AutoPage()
         {
             InitializeComponent();
@@ -28,9 +32,6 @@ namespace _210512_WPF_App_Autokolcsonzo
         }
         public int SelectedId { get; set; }
 
-        private List<TextBox> AddInputs { get; set; }
-        private List<TextBox> EditInputs { get; set; }
-        private List<TextBox> RequiredInputs { get; set; }
 
 
         private void clearInputs(List<TextBox> Inputs)
@@ -80,7 +81,7 @@ namespace _210512_WPF_App_Autokolcsonzo
             {
                 MessageBox.Show("Az évszám nem szám formátum!");
                 return;
-            }
+            };
 
             using (var db = new AutoNyilvantartasDBEntities())
             {
@@ -95,7 +96,6 @@ namespace _210512_WPF_App_Autokolcsonzo
                 db.Auto.Add(newAuto);
                 db.SaveChanges();
                 dg_auto.ItemsSource = db.Auto.ToList();
-
                 clearInputs(AddInputs);
             };
         }
@@ -179,6 +179,7 @@ namespace _210512_WPF_App_Autokolcsonzo
 
             };
         }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();

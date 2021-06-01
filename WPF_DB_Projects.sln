@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "210505_WPF_App_Tanarok", "2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "210512_WPF_App_Autokolcsonzo", "210512_WPF_App_Autokolcsonzo\210512_WPF_App_Autokolcsonzo.csproj", "{780BF605-88FD-42CB-8015-3EA0D8FF0C26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "210531_OfflineInstaller", "210531_OfflineInstaller\210531_OfflineInstaller.csproj", "{5CB214A0-07AD-483E-BFF7-A61CA7D6F048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "210601_ClientManager", "210601_ClientManager\210601_ClientManager.csproj", "{350C2858-30DE-4569-A4DE-01A980DEED9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{780BF605-88FD-42CB-8015-3EA0D8FF0C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{780BF605-88FD-42CB-8015-3EA0D8FF0C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{780BF605-88FD-42CB-8015-3EA0D8FF0C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB214A0-07AD-483E-BFF7-A61CA7D6F048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB214A0-07AD-483E-BFF7-A61CA7D6F048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB214A0-07AD-483E-BFF7-A61CA7D6F048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB214A0-07AD-483E-BFF7-A61CA7D6F048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{350C2858-30DE-4569-A4DE-01A980DEED9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{350C2858-30DE-4569-A4DE-01A980DEED9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{350C2858-30DE-4569-A4DE-01A980DEED9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{350C2858-30DE-4569-A4DE-01A980DEED9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

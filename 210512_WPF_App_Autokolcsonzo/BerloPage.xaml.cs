@@ -20,9 +20,11 @@ namespace _210512_WPF_App_Autokolcsonzo
     /// </summary>
     public partial class BerloPage : Page
     {
+
         public BerloPage()
         {
             InitializeComponent();
+
         }
         private void initialize()
         {

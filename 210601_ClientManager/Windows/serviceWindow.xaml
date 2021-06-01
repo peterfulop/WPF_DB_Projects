@@ -1,0 +1,28 @@
+﻿<Window x:Class="_210601_ClientManager.Windows.serviceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_210601_ClientManager.Windows"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle}" Height="400" Width="400"
+        ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+    
+    <Grid Background="AliceBlue">
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="50,50,50,33">
+            <Label Content="Name"/>
+            <TextBox  x:Name="edit_service_name"/>
+
+            <Label Content="Duration"/>
+            <TextBox  x:Name="edit_service_duration"/>
+
+            <Label Content="Price"/>
+            <TextBox x:Name="edit_service_price"/>
+
+
+            <Button Content="Save changes" Margin="0,20,0,10" x:Name="save_service_btn" Click="save_service_btn_Click"/>
+            <Button Content="Delete item"  Margin="20,20,20,10" x:Name="delete_service_btn" Click="delete_service_btn_Click"/>
+        </StackPanel>
+    </Grid>
+    
+</Window>

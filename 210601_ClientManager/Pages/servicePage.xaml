@@ -1,0 +1,167 @@
+﻿<Page x:Class="_210601_ClientManager.servicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_210601_ClientManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="servicePage"
+      Loaded="Page_Loaded">
+
+    <Grid Background="LightSteelBlue">
+
+        <Grid Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="390*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center">
+
+               
+                <Button x:Name="btn_backHome" Click="btn_backHome_Click" Content="Vissza" Foreground="White">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="DarkSlateGray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Height" Value="25"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" CornerRadius="10"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Label Content="Services"
+                       HorizontalContentAlignment="Center"
+                       FontSize="14"
+                       FontWeight="Bold" Width="536"
+                       />
+
+                <Button x:Name="btn_search" Click="btn_search_Click" Content="Keresés" Foreground="White">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="DimGray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Height" Value="25"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" CornerRadius="10"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+                <Button x:Name="btn_add" Click="btn_add_Click" Content="Új!" Foreground="White" Margin="20,0,0,0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="DarkGreen"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Height" Value="25"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Green"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" CornerRadius="10"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </StackPanel>
+
+
+
+            <DataGrid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                x:Name="dg_service"
+                    SelectionChanged="dg_service_SelectionChanged"
+                    CanUserAddRows="false"
+                    Margin="10"
+                    AreRowDetailsFrozen="True"
+                    AutoGenerateColumns="False"
+                    >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name of servie" Binding="{Binding Path=Name}"/>
+                    <DataGridTextColumn Header="Duration (minute)" Binding="{Binding Path=Duration}"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btn_editRow" Click="btn_editRow_Click"  Content="Szerkesztés" Foreground="White">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Height" Value="25"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="OrangeRed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="600" CornerRadius="10"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+
+
+        </Grid>
+
+
+    </Grid>
+</Page>

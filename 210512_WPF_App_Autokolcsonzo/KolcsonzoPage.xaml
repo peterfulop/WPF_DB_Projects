@@ -34,7 +34,7 @@
                 <TextBlock Text="Kölcsönző neve:" Width="120" Foreground="White"
                                FontSize="14" FontWeight="Light" FontFamily="Fonts/#Dosis"
                                VerticalAlignment="Center"/>
-                <TextBox x:Name="BoxKolcsonzoNev" MaxLength="7" Width="200" Height="25" Margin="0,0,0,5"/>
+                <TextBox x:Name="BoxKolcsonzoNev" Width="200" Height="25" Margin="0,0,0,5"/>
             </WrapPanel>
 
             <WrapPanel>
@@ -115,7 +115,9 @@
 
             <!--Hozzáad gomb létrehozása-->
             <StackPanel Grid.Column="13" Orientation="Horizontal" Margin="220,5,0,0">
-                <Button x:Name="btn_hozzaad" Click="btn_hozzaad_Click"  Content="Hozzáad" Foreground="White" FontSize="14" FontWeight="Medium">
+                <Button x:Name="btn_hozzaad" Click="btn_hozzaad_Click" 
+                        Content="Hozzáad" Foreground="White"
+                        FontSize="14" FontWeight="Medium" Width="124">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>

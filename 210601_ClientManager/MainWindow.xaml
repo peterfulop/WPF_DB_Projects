@@ -1,0 +1,92 @@
+﻿<Window x:Class="_210601_ClientManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_210601_ClientManager"
+        mc:Ignorable="d"
+        Title="Client Manager" Height="500" Width="800" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize"
+           xmlns:fa="http://schemas.fontawesome.io/icons/"
+        Loaded="Window_Loaded"
+        Activated="Window_Activated"
+        WindowStartupLocation="CenterScreen"
+        >
+
+    <Grid Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="365*"/>
+            <RowDefinition Height="55*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Row="0"
+                    Background="#FF252525"
+                    Grid.ColumnSpan="3"
+                    x:Name="window_header" MouseLeftButtonDown="window_header_MouseLeftButtonDown">
+            <Label Content="Client Manager"
+                   Foreground="White"
+                   FontSize="14"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Height="35"/>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    >
+            <Button
+                x:Name="window_close"
+                Content="X"
+                Margin="0,0,10,0"
+                Width="25"
+                Height="25"
+                Click="window_close_Click"
+                >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Foreground" Value="White"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightPink"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="12.5"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2"
+               x:Name="main_frame" NavigationUIVisibility="Hidden">
+                
+        </Frame>
+        
+        
+        
+        
+    </Grid>
+    
+</Window>

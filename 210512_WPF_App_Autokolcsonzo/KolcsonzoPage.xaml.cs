@@ -20,9 +20,14 @@ namespace _210512_WPF_App_Autokolcsonzo
     /// </summary>
     public partial class KolcsonzoPage : Page
     {
+        private List<TextBox> AddInputText { get; set; }
+        private List<ComboBox> AddInputCombo { get; set; }
+
         public KolcsonzoPage()
         {
             InitializeComponent();
+            AddInputText = new List<TextBox>() { BoxKolcsonzoNev, BoxKolcsonzoCim };
+            AddInputCombo = new List<ComboBox>() { ComboKolcsonzoAuto, ComboKolcsonzoBerlo };
         }
 
         private void initialize()
@@ -37,6 +42,27 @@ namespace _210512_WPF_App_Autokolcsonzo
                 ComboKolcsonzoBerlo.ItemsSource = berlo.ToList();
                 dg_kolcsonzo.ItemsSource = kolcsonzo.ToList();
             }
+        }
+
+        private void addNewKolcsonzo()
+        {
+            using (var db = new AutoNyilvantartasDBEntities())
+            {
+                var kolcsonzo = new Kolcsonzo();
+                {
+                    kolcsonzo.Auto_Id = (int)ComboKolcsonzoAuto.SelectedValue;
+                    kolcsonzo.Berlo_Id = (int)ComboKolcsonzoBerlo.SelectedValue;
+                    kolcsonzo.Nev = BoxKolcsonzoNev.Text;
+                    kolcsonzo.Cim = BoxKolcsonzoCim.Text;
+                }
+
+               // MessageBox.Show(kolcsonzo.Berlo_Id.ToString());
+
+                db.Kolcsonzo.Add(kolcsonzo);
+                db.SaveChanges();
+                dg_kolcsonzo.ItemsSource = db.Kolcsonzo.Include("Auto").Include("Berlo").ToList();
+            }
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -54,8 +80,18 @@ namespace _210512_WPF_App_Autokolcsonzo
 
         }
 
+
         private void btn_hozzaad_Click(object sender, RoutedEventArgs e)
         {
+            var empty = Global.isInputsEmpty(AddInputText);
+            if (empty)
+            {
+                MessageBox.Show("Minden mező kitöltése kötelező!");
+                return;
+            };
+
+            //addNewKolcsonzo();
+            //initialize();
 
         }
 
@@ -66,8 +102,8 @@ namespace _210512_WPF_App_Autokolcsonzo
 
         private void btn_auto_new_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new AutoPage());
-            NavigationService.Navigate(new Uri("AutoPage.xaml",UriKind.Relative));
+            NavigationService.Navigate(new AutoPage());
+            //NavigationService.Navigate(new Uri("AutoPage.xaml",UriKind.Relative));
         }
 
         private void btn_berlo_new_Click(object sender, RoutedEventArgs e)
