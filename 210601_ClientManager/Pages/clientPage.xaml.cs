@@ -20,7 +20,6 @@ namespace _210601_ClientManager
     /// </summary>
     public partial class clientPage : Page
     {
-
         public int SelectedId { get; set; }
 
         public clientPage()
@@ -28,14 +27,12 @@ namespace _210601_ClientManager
             InitializeComponent();
         }
 
-
-        private void btn_backHome_Click(object sender, RoutedEventArgs e)
+       private void btn_backHome_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new homePage());
 
         }
-
-        public  void loadGrid()
+        public void loadGrid()
         {
             using (var db = new DatabaseClientManagerEntities())
             {
@@ -54,7 +51,6 @@ namespace _210601_ClientManager
 
         private void btn_editRow_Click(object sender, RoutedEventArgs e)
         {
-
             using (var db = new DatabaseClientManagerEntities())
             {
 
@@ -70,11 +66,10 @@ namespace _210601_ClientManager
                     MessageBox.Show("Nincs tétel kijelölve!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
-
         }
 
 
-        public  void SearchByName( string query )
+        public void SearchByName(string query)
         {
             using (var db = new DatabaseClientManagerEntities())
             {
@@ -83,6 +78,7 @@ namespace _210601_ClientManager
                 dg_client.ItemsSource = res.ToList();
             }
         }
+
         public void SearchByEmail(string query)
         {
             using (var db = new DatabaseClientManagerEntities())
@@ -98,12 +94,14 @@ namespace _210601_ClientManager
             var query = search_box.Text;
             if (query.Length > 0)
             {
-                if (search_combo.SelectedIndex == 0) SearchByName(query);
+
+               if (search_combo.SelectedIndex == 0) SearchByName(query);
                 else SearchByEmail(query);
             }
             else
             {
                 loadGrid();
+                search_box.Clear();
             }
         }
 
@@ -121,7 +119,7 @@ namespace _210601_ClientManager
         private void btn_reload_Click(object sender, RoutedEventArgs e)
         {
             loadGrid();
-
+            search_box.Clear();
         }
     }
 }

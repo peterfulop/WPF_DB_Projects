@@ -37,7 +37,7 @@ namespace _210601_ClientManager
             delete_client_btn.Visibility = addNew ? Visibility.Hidden : Visibility.Visible;
 
             if (addNew) clearInputs();
-            else initInputs( name,  address,  email,  phone);
+            else initInputs(name, address, email, phone);
         }
 
         private void initInputs(string name, string address, string email,string phone)
@@ -56,7 +56,6 @@ namespace _210601_ClientManager
 
         private void CreateData(string name, string address, string email, string phone)
         {
-
             using (var db = new DatabaseClientManagerEntities())
             {
                 var newClient = new Client();
@@ -74,7 +73,6 @@ namespace _210601_ClientManager
 
         private void UpdateData(string name, string address, string email, string phone)
         {
-
             using (var db = new DatabaseClientManagerEntities())
             {
                 if (!Index.Equals(-1))
@@ -115,11 +113,8 @@ namespace _210601_ClientManager
                     case MessageBoxResult.No:
                         break;
                 };
-
             }
         }
-
-
 
         private void save_client_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -137,7 +132,6 @@ namespace _210601_ClientManager
             else
             {
                 UpdateData(edit_client_name.Text, edit_client_address.Text, edit_client_email.Text, edit_client_phone.Text);
-
             }
             this.Close();
         }

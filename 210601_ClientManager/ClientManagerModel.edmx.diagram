@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="65e00fb369ff4ed8a90a990c4ab8f283" Name="Diagram1">
         <EntityTypeShape EntityType="DatabaseClientManagerModel.Client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseClientManagerModel.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseClientManagerModel.Order" Width="1.5" PointX="3.625" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseClientManagerModel.Service" Width="1.5" PointX="6.25" PointY="2.5" IsExpanded="true" />
         <AssociationConnector Association="DatabaseClientManagerModel.FK_Order_ToClientName" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseClientManagerModel.FK_Order_ToServiceName" ManuallyRouted="false" />

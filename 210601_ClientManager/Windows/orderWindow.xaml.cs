@@ -45,9 +45,6 @@ namespace _210601_ClientManager.Windows
             else initInputs(clientIndex, serviceIndex);
         }
 
-
-
-
         private void initInputs(int clientIndex, int serviceIndex)
         {
             edit_order_clientName.SelectedIndex = clientIndex;
@@ -100,7 +97,6 @@ namespace _210601_ClientManager.Windows
                     case MessageBoxResult.No:
                         break;
                 };
-
             }
         }
 
@@ -108,8 +104,6 @@ namespace _210601_ClientManager.Windows
 
         private void save_order_btn_Click(object sender, RoutedEventArgs e)
         {
-
-
             if (AddNew)
             {
                 var date = edit_order_eventDate.SelectedDate.HasValue ? edit_order_eventDate.SelectedDate.Value : DateTime.Now;
